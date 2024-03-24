@@ -1,0 +1,290 @@
+<rdf:RDF
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+xmlns:owl="http://www.w3.org/2002/07/owl#"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:mechanicalengineerings="http://www.example.com/mechanicalengineerings">
+
+<owl:Ontology rdf:about="http://www.example.com/mechanicalengineerings">
+<dc:title> Mechanical Engineering Ontology</dc:title>
+<dc:description>An Ontology describing the field of Mechanical Engineering </dc:description>
+</owl:Ontology>
+
+<!--Defining all the Object Properties-->
+<owl:ObjectProperty rdf:about="http://www.example.com/mechanicalengineerings#consistOf"/>
+<owl:ObjectProperty rdf:about="http://www.example.com/mechanicalengineerings#identify"/>
+<owl:ObjectProperty rdf:about="http://www.example.com/mechanicalengineerings#usedIn"/>
+<owl:ObjectProperty rdf:about="http://www.example.com/mechanicalengineerings#areUsedIn"/>
+<owl:ObjectProperty rdf:about="http://www.example.com/mechanicalengineerings#use"/>
+<owl:ObjectProperty rdf:about="http://www.example.com/mechanicalengineerings#areProvedBy"/>
+<owl:ObjectProperty rdf:about="http://www.example.com/mechanicalengineerings#show"/>
+<owl:ObjectProperty rdf:about="http://www.example.com/mechanicalengineerings#areUsedBy"/>
+<owl:ObjectProperty rdf:about="http://www.example.com/mechanicalengineerings#helpIn"/>
+<owl:ObjectProperty rdf:about="http://www.example.com/mechanicalengineerings#have"/>
+<owl:ObjectProperty rdf:about="http://www.example.com/mechanicalengineerings#includedIn"/>
+
+<!--Defining all the Data Type Properties-->
+<owl:DatatypeProperty rdf:about="http://www.example.com/mechanicalengineerings#releasedOn"/>
+<owl:DatatypeProperty rdf:about="http://www.example.com/mechanicalengineerings#releasedYear"/>
+
+<!--Defining Mechanical Engineering Class-->
+<owl:Class rdf:about="http://www.example.com/mechanicalengineerings#MechanicalEngineering">
+<rdfs:label>Mechanical Engineering</rdfs:label>
+<rdfs:comment>The class of Mechanical Engineering.</rdfs:comment>
+</owl:Class>
+
+
+<!-- Defining Engineering Design - Subclass of Mechanical Engineering-->
+<owl:Class rdf:about="http://www.example.com/mechanicalengineerings#EngineeringDesign">
+<!-- Define it is a subclass of which class -->
+<rdfs:subClassOf rdf:resource="http://www.example.com/mechanicalengineerings#MechanicalEngineering"/>
+<rdfs:label>Engineering Design</rdfs:label>
+<rdfs:comment> Mechanical Engineering is composed of Engineering Designs</rdfs:comment>
+</owl:Class>
+
+<!-- Defining Design Parameters - Subclass of Engineering Design-->
+<owl:Class rdf:about="http://www.example.com/mechanicalengineerings#DesignParameters">
+<!-- Define it is a subclass of which class -->
+<rdfs:subClassOf rdf:resource="http://www.example.com/mechanicalengineerings#EngineeringDesign"/>
+<rdfs:label>Design Parameters</rdfs:label>
+<rdfs:comment> Engineering Designs have Design Parameters</rdfs:comment>
+</owl:Class>
+
+<!-- Defining Simulation Methods - Subclass of Engineering Design-->
+<owl:Class rdf:about="http://www.example.com/mechanicalengineerings#SimulationMethods">
+<!-- Define it is a subclass of which class -->
+<rdfs:subClassOf rdf:resource="http://www.example.com/mechanicalengineerings#EngineeringDesign"/>
+<rdfs:label>Simulation Methods</rdfs:label>
+<rdfs:comment> Engineering Designs have Simulation Methods</rdfs:comment>
+</owl:Class>
+
+<!-- Defining the Parameter Estimation class instance -->
+<rdf:Description rdf:about="http://www.example.com/mechanicalengineerings#ParameterEstimation">
+<!-- Parameter Estimation is an individual (instance) of the Simulation Methods class -->
+<rdf:type rdf:resource="http://www.example.com/mechanicalengineerings#SimulationMethods"/>
+</rdf:Description>
+
+<!-- Defining the Discrete Systems class instance -->
+<rdf:Description rdf:about="http://www.example.com/mechanicalengineerings#DiscreteSystems">
+<!-- Discrete Systems is an individual (instance) of the Simulation Methods class -->
+<rdf:type rdf:resource="http://www.example.com/mechanicalengineerings#SimulationMethods"/>
+</rdf:Description>
+
+<!-- Defining the Analysis Tools class - Subclass of Engineering Design-->
+<owl:Class rdf:about="http://www.example.com/mechanicalengineerings#AnalysisTools">
+<!-- Define it is a subclass of which class -->
+<rdfs:subClassOf rdf:resource="http://www.example.com/mechanicalengineerings#EngineeringDesign"/>
+<rdfs:label>Analysis Tools</rdfs:label>
+<rdfs:comment> Engineering Designs use Analysis Tools</rdfs:comment>
+</owl:Class>
+
+<!-- Defining the areUsedIn property between Analysis Tools and Knowledge Discovery -->
+<owl:ObjectProperty rdf:about="http://www.example.com/mechanicalengineerings#areUsedIn">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.example.com/mechanicalengineerings#AnalysisTools"/>
+    <rdfs:range rdf:resource="http://www.example.com/mechanicalengineerings#KnowledgeDiscovery"/>
+    <rdfs:label>areUsedIn</rdfs:label>
+    <rdfs:comment>Analysis Tools are used in Knowledge Discovery</rdfs:comment>
+</owl:ObjectProperty>
+
+<!-- Defining the ETAP class instance -->
+<rdf:Description rdf:about="http://www.example.com/mechanicalengineerings#ETAP">
+<!-- ETAP is an individual (instance) of the Analysis Tools class -->
+<rdf:type rdf:resource="http://www.example.com/mechanicalengineerings#AnalysisTools"/>
+<mechanicalengineerings:releasedOn> 1986 </mechanicalengineerings:releasedOn>
+</rdf:Description>
+
+<!-- Defining the Matlab class instance -->
+<rdf:Description rdf:about="http://www.example.com/mechanicalengineerings#Matlab">
+<!-- Matlab is an individual (instance) of the Analysis Tools class -->
+<rdf:type rdf:resource="http://www.example.com/mechanicalengineerings#AnalysisTools"/>
+<mechanicalengineerings:releasedYear> 1979 </mechanicalengineerings:releasedYear>
+</rdf:Description>
+
+<!-- Defining Knowledge Discovery - Subclass of Mechanical Engineering-->
+<owl:Class rdf:about="http://www.example.com/mechanicalengineerings#KnowledgeDiscovery">
+<!-- Define it is a subclass of which class -->
+<rdfs:subClassOf rdf:resource="http://www.example.com/mechanicalengineerings#MechanicalEngineering"/>
+<rdfs:label>Knowledge Discovery</rdfs:label>
+<rdfs:comment> Mechanical Engineering is composed of Knowledge Discoveries</rdfs:comment>
+</owl:Class>
+
+<!-- Defining Research - Subclass of Knowledge Discovery-->
+<owl:Class rdf:about="http://www.example.com/mechanicalengineerings#Research">
+<!-- Define it is a subclass of which class -->
+<rdfs:subClassOf rdf:resource="http://www.example.com/mechanicalengineerings#KnowledgeDiscovery"/>
+<rdfs:label>Research</rdfs:label>
+<rdfs:comment> Knowledge Discoveries are done by Research</rdfs:comment>
+</owl:Class>
+
+<!-- Defining helpIn property between Research and ResearchFindings -->
+<rdf:Description rdf:about="http://www.example.com/mechanicalengineerings#Research">
+    <mechanicalengineerings:helpIn rdf:resource="http://www.example.com/mechanicalengineerings#ResearchFindings"/>
+    <rdfs:label>helpIn</rdfs:label>
+    <rdfs:comment>Researches help in doing Research Findings</rdfs:comment>
+</rdf:Description>
+
+<!-- Defining the Research gap instance -->
+<rdf:Description rdf:about="http://www.example.com/mechanicalengineerings#ResearchGap">
+<!-- Research Gap is an individual (instance) of the Research class -->
+<rdf:type rdf:resource="http://www.example.com/mechanicalengineerings#Research"/>
+</rdf:Description>
+
+<!-- Defining the Research Data instance -->
+<rdf:Description rdf:about="http://www.example.com/mechanicalengineerings#ResearchData">
+<!-- Research Data is an individual (instance) of the Research class -->
+<rdf:type rdf:resource="http://www.example.com/mechanicalengineerings#Research"/>
+<mechanicalengineerings:identify rdf:resource="http://www.example.com/mechanicalengineerings#ResearchGap"/>
+</rdf:Description>
+
+<!-- Defining Quality Control - Subclass of Mechanical Engineering-->
+<owl:Class rdf:about="http://www.example.com/mechanicalengineerings#QualityControl">
+<!-- Define it is a subclass of which class -->
+<rdfs:subClassOf rdf:resource="http://www.example.com/mechanicalengineerings#MechanicalEngineering"/>
+<rdfs:label>Quality Control</rdfs:label>
+<rdfs:comment> Mechanical Engineering is composed of Quality Controls</rdfs:comment>
+</owl:Class>
+
+<!-- Defining Quality Issues - Subclass of Quality Control-->
+<owl:Class rdf:about="http://www.example.com/mechanicalengineerings#QualityIssues">
+<!-- Define it is a subclass of which class -->
+<rdfs:subClassOf rdf:resource="http://www.example.com/mechanicalengineerings#QualityControl"/>
+<rdfs:label>Quality Issues</rdfs:label>
+<rdfs:comment> Quality Issues are subcomponents of Quality Control</rdfs:comment>
+</owl:Class>
+
+<!-- Defining Education and Training - Subclass of Mechanical Engineering-->
+<owl:Class rdf:about="http://www.example.com/mechanicalengineerings#EducationAndTraining">
+<!-- Define it is a subclass of which class -->
+<rdfs:subClassOf rdf:resource="http://www.example.com/mechanicalengineerings#MechanicalEngineering"/>
+<rdfs:label>Education and Training</rdfs:label>
+<rdfs:comment> Mechanical Engineering is composed of Education and Trainings</rdfs:comment>
+</owl:Class>
+
+<!-- Defining Realtime Monitoring - Subclass of Education and Training-->
+<owl:Class rdf:about="http://www.example.com/mechanicalengineerings#RealtimeMonitoring">
+<!-- Define it is a subclass of which class -->
+<rdfs:subClassOf rdf:resource="http://www.example.com/mechanicalengineerings#EducationAndTraining"/>
+<rdfs:label>Realtime Monitoring</rdfs:label>
+<rdfs:comment> Realtime monitoring is taught and people are trained for it </rdfs:comment>
+</owl:Class>
+
+<!-- Defining the show property between Realtime Monitoring and Quality Issues -->
+<owl:ObjectProperty rdf:about="http://www.example.com/mechanicalengineerings#show">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.example.com/mechanicalengineerings#RealtimeMonitoring"/>
+    <rdfs:range rdf:resource="http://www.example.com/mechanicalengineerings#QualityIssues"/>
+    <rdfs:label>show</rdfs:label>
+    <rdfs:comment>Quality Issues are shown when Realtime Monitoring is done</rdfs:comment>
+</owl:ObjectProperty>
+
+<!-- Defining Inspection Process - Subclass of Education and Training-->
+<owl:Class rdf:about="http://www.example.com/mechanicalengineerings#InspectionProcess">
+<!-- Define it is a subclass of which class -->
+<rdfs:subClassOf rdf:resource="http://www.example.com/mechanicalengineerings#EducationAndTraining"/>
+<rdfs:label>Inspection Process</rdfs:label>
+<rdfs:comment> Inspection Processes are taught and people are trained for it </rdfs:comment>
+</owl:Class>
+
+<!-- Defining Engineering Concepts - Subclass of Education and Training-->
+<owl:Class rdf:about="http://www.example.com/mechanicalengineerings#EngineeringConcepts">
+<!-- Define it is a subclass of which class -->
+<rdfs:subClassOf rdf:resource="http://www.example.com/mechanicalengineerings#EducationAndTraining"/>
+<rdfs:label>Engineering Concepts</rdfs:label>
+<rdfs:comment> All types of Engineering Concepts are taught which are then later applied in the field </rdfs:comment>
+</owl:Class>
+
+<!-- Defining the usedIn property between Engineering Concepts and Research -->
+<owl:ObjectProperty rdf:about="http://www.example.com/mechanicalengineerings#usedIn">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.example.com/mechanicalengineerings#EngineeringConcepts"/>
+    <rdfs:range rdf:resource="http://www.example.com/mechanicalengineerings#Research"/>
+    <rdfs:label>usedIn</rdfs:label>
+    <rdfs:comment>Engineering Concepts used in Researches</rdfs:comment>
+</owl:ObjectProperty>
+
+<!-- Defining the usedIn property between Engineering Concepts and Engineering Solutions -->
+<owl:ObjectProperty rdf:about="http://www.example.com/mechanicalengineerings#includedIn">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.example.com/mechanicalengineerings#EngineeringConcepts"/>
+    <rdfs:range rdf:resource="http://www.example.com/mechanicalengineerings#EngineeringSolutions"/>
+    <rdfs:label>includedIn</rdfs:label>
+    <rdfs:comment>Engineering Concepts are included in Engineering Solutions</rdfs:comment>
+</owl:ObjectProperty>
+
+<!-- Defining the consistOf property between Engineering Concepts and Simulation Methods -->
+<owl:ObjectProperty rdf:about="http://www.example.com/mechanicalengineerings#consistOf">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.example.com/mechanicalengineerings#EngineeringConcepts"/>
+    <rdfs:range rdf:resource="http://www.example.com/mechanicalengineerings#SimulationMethods"/>
+    <rdfs:label>consistOf</rdfs:label>
+    <rdfs:comment>Engineering Concepts consist of Simulation Methods</rdfs:comment>
+</owl:ObjectProperty>
+
+<!-- Defining Validation Methods - Subclass of Education and Training-->
+<owl:Class rdf:about="http://www.example.com/mechanicalengineerings#ValidationMethods">
+<!-- Define it is a subclass of which class -->
+<rdfs:subClassOf rdf:resource="http://www.example.com/mechanicalengineerings#EducationAndTraining"/>
+<rdfs:label>Validation Methods</rdfs:label>
+<rdfs:comment> Validation Methods are taught to validate information and calculations </rdfs:comment>
+</owl:Class>
+
+<!-- Defining Educational Resources - Subclass of Mechanical Engineering-->
+<owl:Class rdf:about="http://www.example.com/mechanicalengineerings#EducationalResources">
+<!-- Define it is a subclass of which class -->
+<rdfs:subClassOf rdf:resource="http://www.example.com/mechanicalengineerings#MechanicalEngineering"/>
+<rdfs:label>Educational Resources</rdfs:label>
+<rdfs:comment> Mechanical Engineering is composed of Educational Resources</rdfs:comment>
+</owl:Class>
+
+<!-- Defining the Research Findings instance -->
+<rdf:Description rdf:about="http://www.example.com/mechanicalengineerings#ResearchFindings">
+<!-- Research Findings is an individual (instance) of the Educational Resources class -->
+<rdf:type rdf:resource="http://www.example.com/mechanicalengineerings#EducationalResources"/>
+<mechanicalengineerings:areProvedBy rdf:resource="http://www.example.com/mechanicalengineerings#ValidationMethods"/>
+<mechanicalengineerings:areUsedBy rdf:resource="http://www.example.com/mechanicalengineerings#EngineeringSolutions"/>
+</rdf:Description>
+
+<!-- Defining use property between Research Findings and Research Data -->
+<rdf:Description rdf:about="http://www.example.com/mechanicalengineerings#ResearchFindings">
+    <mechanicalengineerings:have rdf:resource="http://www.example.com/mechanicalengineerings#ResearchData"/>
+    <rdfs:label>have</rdfs:label>
+    <rdfs:comment>Research Finidngs have Research Data</rdfs:comment>
+</rdf:Description>
+
+<!-- Defining Engineering Solutions - Subclass of Mechanical Engineering-->
+<owl:Class rdf:about="http://www.example.com/mechanicalengineerings#EngineeringSolutions">
+<!-- Define it is a subclass of which class -->
+<rdfs:subClassOf rdf:resource="http://www.example.com/mechanicalengineerings#MechanicalEngineering"/>
+<rdfs:label>Engineering Solutions</rdfs:label>
+<rdfs:comment> Mechanical Engineering is composed of Engineering Solutions</rdfs:comment>
+</owl:Class>
+
+<!-- Defining the Robots instance -->
+<rdf:Description rdf:about="http://www.example.com/mechanicalengineerings#Robots">
+<!-- Robots is an individual (instance) of the Engineering Solutions class -->
+<rdf:type rdf:resource="http://www.example.com/mechanicalengineerings#EngineeringSolutions"/>
+</rdf:Description>
+
+<!-- Defining the Aircrafts instance -->
+<rdf:Description rdf:about="http://www.example.com/mechanicalengineerings#Aircrafts">
+<!-- Aircrafts is an individual (instance) of the Engineering Solutions class -->
+<rdf:type rdf:resource="http://www.example.com/mechanicalengineerings#EngineeringSolutions"/>
+</rdf:Description>
+
+<!-- Defining the Weapons instance -->
+<rdf:Description rdf:about="http://www.example.com/mechanicalengineerings#Weapons">
+<!-- Weapons is an individual (instance) of the Engineering Solutions class -->
+<rdf:type rdf:resource="http://www.example.com/mechanicalengineerings#EngineeringSolutions"/>
+</rdf:Description>
+
+<!-- Defining the use property between Engineering Solutions and Design Parameters -->
+<owl:ObjectProperty rdf:about="http://www.example.com/mechanicalengineerings#use">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.example.com/mechanicalengineerings#EngineeringSolutions"/>
+    <rdfs:range rdf:resource="http://www.example.com/mechanicalengineerings#DesignParameters"/>
+    <rdfs:label>use</rdfs:label>
+    <rdfs:comment>Engineering Solutions use Design Parameters</rdfs:comment>
+</owl:ObjectProperty>
+
+</rdf:RDF>
